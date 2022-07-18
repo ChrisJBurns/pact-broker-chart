@@ -51,6 +51,20 @@ spec:
               containerPort: {{ .Values.broker.containerPorts.https }}
               protocol: TCP
           env:
+            {{- if .Values.broker.config.databaseClean.enabled }}
+            - name: PACT_BROKER_DATABASE_CLEAN_ENABLED
+              value: {{ .Values.broker.config.databaseClean.enabled | quote }}
+            - name: PACT_BROKER_DATABASE_CLEAN_CRON_SCHEDULE
+              value: {{ .Values.broker.config.databaseClean.cronSchedule | quote }}
+            - name: PACT_BROKER_DATABASE_CLEAN_DELETION_LIMIT
+              value: {{ .Values.broker.config.databaseClean.deletionLimit | quote }}
+            - name: PACT_BROKER_DATABASE_CLEAN_OVERWRITTEN_DATA_MAX_AGE
+              value: {{ .Values.broker.config.databaseClean.overwrittenDataMaxAge | quote }}
+            - name: PACT_BROKER_DATABASE_CLEAN_KEEP_VERSION_SELECTORS
+              value: {{ .Values.broker.config.databaseClean.keepVersionSelectors | quote }}
+            - name: PACT_BROKER_DATABASE_CLEAN_DRY_RUN
+              value: {{ .Values.broker.config.databaseClean.dryRun | quote }}
+            {{- end}}
             - name: PACT_BROKER_PUBLIC_HEARTBEAT
               value: {{ .Values.broker.config.basicAuth.publicHeartbeat | quote }}
             - name: PACT_BROKER_PORT

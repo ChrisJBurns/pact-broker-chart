@@ -126,6 +126,27 @@ broker:
       # -- Set this to true to allow status badges to be embedded in README files without requiring a hardcoded password.
       enablePublicBadgeAccess: false
 
+    # -- Pact Broker [automatic data cleanup](https://docs.pact.io/pact_broker/docker_images/pactfoundation#automatic-data-clean-up)
+    databaseClean:
+
+      # -- Set to true to enable the automatic data clean up.
+      enabled: false
+
+      # -- Set to a cron schedule that will run when your Broker is under the least operational load.
+      cronSchedule: 15 2 * * *
+
+      # -- The maximum number of records to delete at a time for each of the removable data categories.
+      deletionLimit: 500
+
+      # -- The maximum number of days to keep "overwritten" data.
+      overwrittenDataMaxAge: 90
+
+      # -- A JSON string containing a list of the "keep" selectors.
+      keepVersionSelectors: '[{ "max_age": 90 }]'
+
+      # -- Defaults to false. Set to true to see the output of what would have been deleted if the task had run.
+      dryRun: false
+
   # -- Pact Broker [Affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity)
   affinity: {}
 
