@@ -116,7 +116,7 @@ broker:
     # -- Whether or not to run the database data migrations on start up. It is recommended to set this to true.
     autoMigrateDbData: true
 
-    # -- If true, will not raise an error if a database migration is recorded in the database that does not have an equivalent file in the codebase. 
+    # -- If true, will not raise an error if a database migration is recorded in the database that does not have an equivalent file in the codebase.
     # If this is true, an older version of the code may be used with a newer version of the database, however, data integrity issues may occur.
     allowMissingMigrationFiles: true
 
@@ -180,7 +180,7 @@ broker:
         # -- The key to which holds the value of the password within the existingSecret
         existingSecretPasswordKey: ""
 
-    # -- The schedule of seconds to wait between webhook execution attempts. 
+    # -- The schedule of seconds to wait between webhook execution attempts.
     # The default schedule is 10 sec, 1 min, 2 min, 5 min, 10 min, 20 min (38 minutes in total).
     webhookRetrySchedule: 10 60 120 300 600 1200
 
@@ -188,7 +188,7 @@ broker:
     # It is highly recommended that only POST requests are allowed to ensure that webhooks cannot be used to retrieve sensitive information from hosts within the same network.
     webhookHttpMethodWhitelist: POST
 
-    # -- If webhook call returns the response with an HTTP code that is listed in the success codes then the operation is considered a success, 
+    # -- If webhook call returns the response with an HTTP code that is listed in the success codes then the operation is considered a success,
     # otherwise the webhook will be re-triggered based on the webhook_retry_schedule configuration.
     webhookHttpCodeSuccess: "200 201 202 203 204 205 206"
 
@@ -202,7 +202,7 @@ broker:
     disable_ssl: false
 
     # -- Base URLs can be configured for architectures that use gateways or proxies that allow the same Pact Broker instance to be addressed with different base URLs.
-    #  The application may run correctly without this attribute, however, 
+    #  The application may run correctly without this attribute, however,
     # it is strongly recommended to set it when deploying the Pact Broker to production as it prevents cache poisoning security vulnerabilities
     baseUrls:
 
@@ -220,19 +220,19 @@ broker:
     useHalBrowser: true
 
     # -- When a pact is published, the consumer, provider and consumer version resources are automatically created.
-    # To prevent a pacticipant (consumer or provider) being created multiple times with slightly different name variants (eg. FooBar/foo-bar/foo bar/Foo Bar Service), 
-    # a check is performed to determine if a new pacticipant name is likely to be a duplicate of any existing applications. 
+    # To prevent a pacticipant (consumer or provider) being created multiple times with slightly different name variants (eg. FooBar/foo-bar/foo bar/Foo Bar Service),
+    # a check is performed to determine if a new pacticipant name is likely to be a duplicate of any existing applications.
     # If it is deemed similar enough to an existing name, a 409 will be returned.
     checkForPotentialDuplicatePacticipantNames: true
 
-    # -- When true and a tag is created, if there is an environment with the name of the newly created tag, 
+    # -- When true and a tag is created, if there is an environment with the name of the newly created tag,
     # a deployed version is also created for the pacticipant version.
     createDeployedVersionsForTags: true
 
     # -- When true, the first tag applied to a version within the use_first_tag_as_branch_time_limit (10 seconds) will be used to populate the branch property of the version.
     useFirstTagAsBranch: true
 
-    # -- When true and a pacticipant version is created with a tag or a branch that matches one of the names in main_branch_candidates, 
+    # -- When true and a pacticipant version is created with a tag or a branch that matches one of the names in main_branch_candidates,
     # the mainBranch property is set for that pacticipant if it is not already set.
     autoDetectMainBranch: true
 
